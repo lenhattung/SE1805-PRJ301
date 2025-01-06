@@ -8,3 +8,8 @@ LMS (làm bài Quizz/Workshop/Assignment):
 ----
 Edunext (Shcedule / Disscussion)
 https://fu-edunext.fpt.edu.vn/session/detail?classId=14745
+----
+Source-code: https://github.com/lenhattung/SE1805-PRJ301/
+----
+Support: https://www.ultraviewer.net/vi/download.html
+----
