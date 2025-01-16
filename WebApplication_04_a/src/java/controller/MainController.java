@@ -61,6 +61,8 @@ public class MainController extends HttpServlet {
             out.println("B must be an integer number!");
             return;
         }
+        
+        
     }
 
     @Override
