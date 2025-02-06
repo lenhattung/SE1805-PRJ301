@@ -17,12 +17,18 @@ public class UserTest {
     public static void main(String[] args) {
         UserDAO userDAO = new UserDAO();
 
-        // insert
 //        UserDTO u1 = new UserDTO("TLN01", "Le Nhat Tung", "AD", "khong_co_pass");
 //        userDAO.create(u1);
-        for (int i = 0; i < 10; i++) {
-            UserDTO u = new UserDTO("USER"+i, "Nguyen Van  "+i, "US", "___"+i);
-            userDAO.create(u);
-        }
+//        for (int i = 0; i < 10; i++) {
+//            UserDTO u = new UserDTO("USER"+i, "Nguyen Van  "+i, "US", "___"+i);
+//            userDAO.create(u);
+//        }
+
+
+//        UserDTO u2 = new UserDTO("TLN01", "Le Nhat Tung", "US", "Nothing");
+//        userDAO.update(u2);
+
+          userDAO.delete("TLN01");
+
     }
 }
