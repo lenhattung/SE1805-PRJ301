@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/OneDrive/Teaching/FPT/PRJ301/github/SE1805-PRJ301/WebApplication_08/web/index.html</file>
-            <file>file:/D:/OneDrive/Teaching/FPT/PRJ301/github/SE1805-PRJ301/WebApplication_08/users.sql</file>
+            <file>file:/D:/OneDrive/Teaching/FPT/PRJ301/github/SE1805-PRJ301/SE1805-PRJ301/WebApplication_08/web/invalid.jsp</file>
+            <file>file:/D:/OneDrive/Teaching/FPT/PRJ301/github/SE1805-PRJ301/SE1805-PRJ301/WebApplication_08/src/java/utils/DBUtils.java</file>
+            <file>file:/D:/OneDrive/Teaching/FPT/PRJ301/github/SE1805-PRJ301/SE1805-PRJ301/WebApplication_08/web/search.jsp</file>
+            <file>file:/D:/OneDrive/Teaching/FPT/PRJ301/github/SE1805-PRJ301/SE1805-PRJ301/WebApplication_08/src/java/dto/UserDTO.java</file>
+            <file>file:/D:/OneDrive/Teaching/FPT/PRJ301/github/SE1805-PRJ301/SE1805-PRJ301/WebApplication_08/web/login.jsp</file>
+            <file>file:/D:/OneDrive/Teaching/FPT/PRJ301/github/SE1805-PRJ301/SE1805-PRJ301/WebApplication_08/src/java/controller/MainController.java</file>
+            <file>file:/D:/OneDrive/Teaching/FPT/PRJ301/github/SE1805-PRJ301/SE1805-PRJ301/WebApplication_08/src/java/dao/IDAO.java</file>
+            <file>file:/D:/OneDrive/Teaching/FPT/PRJ301/github/SE1805-PRJ301/SE1805-PRJ301/WebApplication_08/src/java/dao/UserDAO.java</file>
         </group>
     </open-files>
 </project-private>
