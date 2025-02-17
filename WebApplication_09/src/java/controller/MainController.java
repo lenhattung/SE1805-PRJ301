@@ -35,11 +35,6 @@ public class MainController extends HttpServlet {
         UserDTO user = getUser(strUserID);
         System.out.println(user);
         return user != null && user.getPassword().equals(strPassword);
-//        if (user != null && user.getPassword().equals(strPassword)) {
-//            return true;
-//        } else {
-//            return false;
-//        }
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -52,7 +47,7 @@ public class MainController extends HttpServlet {
                 url = LOGIN_PAGE;
             } else {
                 if (action.equals("login")) {
-                    String strUserID = request.getParameter("txtUsername");
+                    String strUserID = request.getParameter("txtUserID");
                     String strPassword = request.getParameter("txtPassword");
                     if (isValidLogin(strUserID, strPassword)) {
                         url = "search.jsp";
@@ -61,10 +56,13 @@ public class MainController extends HttpServlet {
                     } else {
                         url = "invalid.jsp";
                     }
+                } else if (action.equals("logout")) {
+                    request.setAttribute("user", null);
+                    url ="logout_confirm.jsp";
                 }
             }
         } catch (Exception e) {
-            log("Error in MainController: " + e.toString())  ; 
+            log("Error in MainController: " + e.toString());
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

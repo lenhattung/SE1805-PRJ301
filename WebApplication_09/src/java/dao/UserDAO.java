@@ -53,8 +53,8 @@ public class UserDAO implements IDAO<UserDTO, String> {
         String sql = "SELECT * FROM [tblUsers];";
         try {
             Connection conn = DBUtils.getConnection();
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 UserDTO user = new UserDTO(
                         rs.getString("userID"),
@@ -78,7 +78,7 @@ public class UserDAO implements IDAO<UserDTO, String> {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, id);
-            ResultSet rs = ps.executeQuery(sql);
+            ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 UserDTO user = new UserDTO(
                         rs.getString("userID"),
