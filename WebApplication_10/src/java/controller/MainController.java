@@ -59,7 +59,7 @@ public class MainController extends HttpServlet {
                     }
                 } else if (action.equals("logout")) {
                     request.setAttribute("user", null);
-                    url ="logout_confirm.jsp";
+                    url ="login.jsp";
                 }
             }
         } catch (Exception e) {
