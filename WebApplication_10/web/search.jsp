@@ -18,21 +18,21 @@
         <%@include file="header.jsp" %>
         <div style="min-height: 500px; padding: 20px">
 
-            
-            
+
+
             <%
-            if(session.getAttribute("user")!=null) {    
-                
-                UserDTO user = (UserDTO) session.getAttribute("user");
+                if (session.getAttribute("user") != null) {
+
+                    UserDTO user = (UserDTO) session.getAttribute("user");
             %>
             Welcome <b> <%=user.getFullName()%> </b>
             <br/>
-            
+
             <form action="MainController">
                 <input type="hidden" name="action" value="logout"/>
                 <input type="submit" value="Logout"/>
             </form>
-            
+
             <hr/>
             <form action="MainController">
                 <input type="hidden" name="action" value="search"/>
@@ -42,40 +42,40 @@
             <br/>
             <br/>
             <%
-                if(request.getAttribute("books")!=null){
-                    List<BookDTO> books = (List<BookDTO>)request.getAttribute("books");
-                    %>
-                    <table border="1">
-                        <tr>
-                            <td>BookID</td>
-                            <td>Title</td>
-                            <td>Author</td>
-                            <td>PublishYear</td>
-                            <td>Price</td>
-                            <td>Quantity</td>
-                        </tr>
-                        <%
-                            for(BookDTO b: books){
-                                %>
-                                 <tr>
-                                    <td><%=b.getBookID()%></td>
-                                    <td><%=b.getTitle()%></td>
-                                    <td><%=b.getAuthor()%></td>
-                                    <td><%=b.getPublishYear()%></td>
-                                    <td><%=b.getPrice()%></td>
-                                    <td><%=b.getQuantity()%></td>
-                                </tr>
-                                <%
-                            }
-                        %>
-                    </table>
-                    <%
+                if (request.getAttribute("books") != null) {
+                    List<BookDTO> books = (List<BookDTO>) request.getAttribute("books");
+            %>
+            <table border="1">
+                <tr>
+                    <td>BookID</td>
+                    <td>Title</td>
+                    <td>Author</td>
+                    <td>PublishYear</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                </tr>
+                <%
+                    for (BookDTO b : books) {
+                %>
+                <tr>
+                    <td><%=b.getBookID()%></td>
+                    <td><%=b.getTitle()%></td>
+                    <td><%=b.getAuthor()%></td>
+                    <td><%=b.getPublishYear()%></td>
+                    <td><%=b.getPrice()%></td>
+                    <td><%=b.getQuantity()%></td>
+                </tr>
+                <%
+                    }
+                %>
+            </table>
+            <%
                 }
             %>
-            <% } else{ %>
-                You do not have permission to access this content.
-            <% } %>
-        
+            <% } else { %>
+            You do not have permission to access this content.
+            <% }%>
+
         </div>
         <%@include file="footer.jsp" %>
     </body>
