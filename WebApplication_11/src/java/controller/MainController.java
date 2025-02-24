@@ -62,10 +62,21 @@ public class MainController extends HttpServlet {
                     }
                 } else if (action.equals("logout")) {
                     request.getSession().invalidate(); // Hủy session
-                    url ="login.jsp";
+                    url = "login.jsp";
                 } else if (action.equals("search")) {
-                    url ="search.jsp";
+                    url = "search.jsp";
                     BookDAO bdao = new BookDAO();
+                    String searchTerm = request.getParameter("searchTerm");
+                    List<BookDTO> books = bdao.searchByTitle2(searchTerm);
+                    request.setAttribute("books", books);
+                    request.setAttribute("searchTerm", searchTerm);
+                } else if (action.equals("delete")) {
+                    BookDAO bdao = new BookDAO();
+                    String id = request.getParameter("id");
+                    bdao.updateQuantityToZero(id);
+                    
+                    // search
+                    url = "search.jsp";
                     String searchTerm = request.getParameter("searchTerm");
                     List<BookDTO> books = bdao.searchByTitle2(searchTerm);
                     request.setAttribute("books", books);
