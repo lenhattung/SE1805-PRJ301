@@ -67,7 +67,7 @@ public class MainController extends HttpServlet {
                     url ="search.jsp";
                     BookDAO bdao = new BookDAO();
                     String searchTerm = request.getParameter("searchTerm");
-                    List<BookDTO> books = bdao.searchByTitle(searchTerm);
+                    List<BookDTO> books = bdao.searchByTitle2(searchTerm);
                     request.setAttribute("books", books);
                     request.setAttribute("searchTerm", searchTerm);
                 }

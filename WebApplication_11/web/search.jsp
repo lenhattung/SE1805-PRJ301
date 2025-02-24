@@ -88,6 +88,7 @@
                 <input type="hidden" name="action" value="search"/>
                 Search Books: <input type="text" name="searchTerm" value="<%=searchTerm%>"/>
                 <input type="submit" value="Search"/>
+                
             </form>
 
             <%
@@ -104,6 +105,7 @@
                         <th>PublishYear</th>
                         <th>Price</th>
                         <th>Quantity</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -116,6 +118,9 @@
                         <td><%=b.getPublishYear()%></td>
                         <td><%=b.getPrice()%></td>
                         <td><%=b.getQuantity()%></td>
+                        <td><a href="#">
+                                <img src="assets/images/delete-icon.png"  style="height: 25px"/>                              
+                            </a></td>
                     </tr>
                     <%
                         }
