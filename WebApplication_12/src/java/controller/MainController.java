@@ -90,6 +90,20 @@ public class MainController extends HttpServlet {
                     // search
                     url = "search.jsp";
                     search(request, response);
+                } else if (action.equals("add")) {
+                    String bookID = request.getParameter("txtBookID");
+                    String title = request.getParameter("txtTitle");
+                    String author = request.getParameter("txtAuthor");
+                    int publishYear = Integer.parseInt(request.getParameter("txtPublishYear"));
+                    double price = Double.parseDouble(request.getParameter("txtPrice"));
+                    int quantity = Integer.parseInt(request.getParameter("txtQuantity"));
+
+                    BookDTO book = new BookDTO(bookID, title, author, publishYear, price, quantity);
+                    bookDAO.create(book);
+                    
+                    // search
+                    url = "search.jsp";
+                    search(request, response);
                 }
             }
         } catch (Exception e) {

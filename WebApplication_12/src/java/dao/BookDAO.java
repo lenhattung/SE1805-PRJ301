@@ -21,6 +21,24 @@ public class BookDAO implements IDAO<BookDTO, String> {
 
     @Override
     public boolean create(BookDTO entity) {
+        String sql = "INSERT INTO tblBooks"
+                + " (BookID,Title,Author,PublishYear,Price,Quantity) "
+                + " VALUES (?,?,?,?,?,?)";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, entity.getBookID());
+            ps.setString(2, entity.getTitle());
+            ps.setString(3, entity.getAuthor());
+            ps.setInt(4, entity.getPublishYear());
+            ps.setDouble(5, entity.getPrice());
+            ps.setInt(6, entity.getQuantity());
+
+            int i = ps.executeUpdate();
+            return i > 0;
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
         return false;
     }
 
@@ -103,7 +121,7 @@ public class BookDAO implements IDAO<BookDTO, String> {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, id);
-            
+
             int i = ps.executeUpdate();
             return i > 0;
         } catch (Exception e) {

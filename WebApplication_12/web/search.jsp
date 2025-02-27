@@ -90,6 +90,10 @@
                 <input type="submit" value="Search"/>
                 
             </form>
+                
+                <a href="bookForm.jsp">
+                    Add
+                </a>
 
             <%
                 if (request.getAttribute("books") != null) {
