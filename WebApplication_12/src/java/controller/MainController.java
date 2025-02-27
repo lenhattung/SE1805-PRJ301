@@ -91,19 +91,38 @@ public class MainController extends HttpServlet {
                     url = "search.jsp";
                     search(request, response);
                 } else if (action.equals("add")) {
-                    String bookID = request.getParameter("txtBookID");
-                    String title = request.getParameter("txtTitle");
-                    String author = request.getParameter("txtAuthor");
-                    int publishYear = Integer.parseInt(request.getParameter("txtPublishYear"));
-                    double price = Double.parseDouble(request.getParameter("txtPrice"));
-                    int quantity = Integer.parseInt(request.getParameter("txtQuantity"));
+                    try {
+                        boolean checkError = false;
+                        String bookID = request.getParameter("txtBookID");
+                        String title = request.getParameter("txtTitle");
+                        String author = request.getParameter("txtAuthor");
+                        int publishYear = Integer.parseInt(request.getParameter("txtPublishYear"));
+                        double price = Double.parseDouble(request.getParameter("txtPrice"));
+                        int quantity = Integer.parseInt(request.getParameter("txtQuantity"));
+                        
+                        if(bookID==null || bookID.trim().isEmpty()){
+                            checkError = true;
+                            request.setAttribute("txtBookID_error", "Book ID cannot be empty.");
+                        }
+                        
+                        if(quantity < 0){
+                            checkError = true;
+                            request.setAttribute("txtQuantity_error", "Quantity >=0.");
+                        }
+                        
+                        BookDTO book = new BookDTO(bookID, title, author, publishYear, price, quantity);
+                        if (!checkError) {
+                            bookDAO.create(book);
+                            // search
+                            url = "search.jsp";
+                            search(request, response);
+                        }else{
+                            request.setAttribute("book", book);
+                            url = "bookForm.jsp";
+                        }
+                    } catch (Exception e) {
+                    }
 
-                    BookDTO book = new BookDTO(bookID, title, author, publishYear, price, quantity);
-                    bookDAO.create(book);
-                    
-                    // search
-                    url = "search.jsp";
-                    search(request, response);
                 }
             }
         } catch (Exception e) {
