@@ -1,3 +1,4 @@
+<%@page import="utils.AuthUtils"%>
 <%@page import="dto.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <style>
@@ -128,8 +129,8 @@
                     <input type="text" class="search-input" placeholder="Tìm kiếm...">
                     <button class="search-button">🔍</button>
                 </div>
-                <% if (session.getAttribute("user") != null) {
-                        UserDTO userHeader = (UserDTO) session.getAttribute("user");
+                <% if (AuthUtils.isLoggedIn(session)) {
+                        UserDTO userHeader = AuthUtils.getUser(session);
                 %>
                 <div class="user-section">
                     <span class="welcome-text">Xin chào, <span class="user-name"><%=userHeader.getFullName()%></span>!</span>

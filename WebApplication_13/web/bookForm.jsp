@@ -3,6 +3,7 @@
     Created on : Feb 27, 2025, 8:16:21 AM
     Author     : tungi
 --%>
+<%@page import="utils.AuthUtils"%>
 <%@page import="dto.UserDTO"%>
 <%@page import="dto.BookDTO"%>
 <%@page import="java.awt.print.Book"%>
@@ -167,9 +168,8 @@
         <jsp:include page="header.jsp"/>
 
         <div class="page-content">
-            <% if (session.getAttribute("user") != null) {
-                    UserDTO user = (UserDTO) session.getAttribute("user");
-                    if (user.getRoleID().equals("AD")) {
+            <% if (AuthUtils.isLoggedIn(session)) {
+                    if (AuthUtils.isAdmin(session)) {
             %>
             <%
                 BookDTO book = new BookDTO();

@@ -4,6 +4,7 @@
     Author     : tungi
 --%>
 
+<%@page import="utils.AuthUtils"%>
 <%@page import="dto.BookDTO"%>
 <%@page import="java.awt.print.Book"%>
 <%@page import="java.util.List"%>
@@ -162,15 +163,12 @@
                     <input type="submit" value="Search" class="search-btn"/>
                 </form>
             </div>
-            <%  if (session.getAttribute("user") != null) {
-                    UserDTO usera = (UserDTO) session.getAttribute("user");
-                    if (usera.getRoleID().equals("AD")) {
+            <%  if (AuthUtils.isAdmin(session)) {
             %>
             <a href="bookForm.jsp" class="add-btn">
                 Add
             </a>
-            <%}
-                }%>
+            <%}%>
 
             <%
                 if (request.getAttribute("books") != null) {
@@ -186,13 +184,9 @@
                         <th>PublishYear</th>
                         <th>Price</th>
                         <th>Quantity</th>
-                            <%  if (session.getAttribute("user") != null) {
-                                    UserDTO user1 = (UserDTO) session.getAttribute("user");
-                                    if (user1.getRoleID().equals("AD")) {
-                            %>
+                            <%  if (AuthUtils.isAdmin(session)) {%>
                         <th>Action</th>
-                            <%}
-                            }%>
+                            <%}%>
                     </tr>
                 </thead>
                 <tbody>
@@ -205,15 +199,11 @@
                         <td><%=b.getPublishYear()%></td>
                         <td><%=b.getPrice()%></td>
                         <td><%=b.getQuantity()%></td>
-                        <%  if (session.getAttribute("user") != null) {
-                                UserDTO user2 = (UserDTO) session.getAttribute("user");
-                                if (user2.getRoleID().equals("AD")) {
-                        %>
+                        <%  if (AuthUtils.isAdmin(session)) {%>
                         <td><a href="MainController?action=delete&id=<%=b.getBookID()%>&searchTerm=<%=searchTerm%>">
                                 <img src="assets/images/delete-icon.png"  style="height: 25px"/>                              
                             </a></td>
-                            <%}
-                            }%>
+                            <%}%>
                     </tr>
                     <%
                         }
