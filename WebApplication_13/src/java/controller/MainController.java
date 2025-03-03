@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -78,51 +79,69 @@ public class MainController extends HttpServlet {
                         url = "login.jsp";
                     }
                 } else if (action.equals("logout")) {
-                    request.getSession().invalidate(); // Hủy session
-                    url = "login.jsp";
+                    HttpSession session = request.getSession();
+                    if (session.getAttribute("user") != null) {
+                        request.getSession().invalidate(); // Hủy session
+                        url = "login.jsp";
+                    }
                 } else if (action.equals("search")) {
-                    url = "search.jsp";
-                    search(request, response);
+                    HttpSession session = request.getSession();
+                    if (session.getAttribute("user") != null) {
+                        url = "search.jsp";
+                        search(request, response);
+                    }
                 } else if (action.equals("delete")) {
-                    String id = request.getParameter("id");
-                    bookDAO.updateQuantityToZero(id);
+                    HttpSession session = request.getSession();
+                    if (session.getAttribute("user") != null) {
+                        UserDTO user = (UserDTO) session.getAttribute("user");
+                        if (user.getRoleID().equals("AD")) {
+                            String id = request.getParameter("id");
+                            bookDAO.updateQuantityToZero(id);
 
-                    // search
-                    url = "search.jsp";
-                    search(request, response);
-                } else if (action.equals("add")) {
-                    try {
-                        boolean checkError = false;
-                        String bookID = request.getParameter("txtBookID");
-                        String title = request.getParameter("txtTitle");
-                        String author = request.getParameter("txtAuthor");
-                        int publishYear = Integer.parseInt(request.getParameter("txtPublishYear"));
-                        double price = Double.parseDouble(request.getParameter("txtPrice"));
-                        int quantity = Integer.parseInt(request.getParameter("txtQuantity"));
-                        
-                        if(bookID==null || bookID.trim().isEmpty()){
-                            checkError = true;
-                            request.setAttribute("txtBookID_error", "Book ID cannot be empty.");
-                        }
-                        
-                        if(quantity < 0){
-                            checkError = true;
-                            request.setAttribute("txtQuantity_error", "Quantity >=0.");
-                        }
-                        
-                        BookDTO book = new BookDTO(bookID, title, author, publishYear, price, quantity);
-                        if (!checkError) {
-                            bookDAO.create(book);
                             // search
                             url = "search.jsp";
                             search(request, response);
-                        }else{
-                            request.setAttribute("book", book);
-                            url = "bookForm.jsp";
                         }
-                    } catch (Exception e) {
                     }
+                } else if (action.equals("add")) {
+                    HttpSession session = request.getSession();
 
+                    if (session.getAttribute("user") != null) {
+                        UserDTO user = (UserDTO) session.getAttribute("user");
+                        if (user.getRoleID().equals("AD")) {
+                            try {
+                                boolean checkError = false;
+                                String bookID = request.getParameter("txtBookID");
+                                String title = request.getParameter("txtTitle");
+                                String author = request.getParameter("txtAuthor");
+                                int publishYear = Integer.parseInt(request.getParameter("txtPublishYear"));
+                                double price = Double.parseDouble(request.getParameter("txtPrice"));
+                                int quantity = Integer.parseInt(request.getParameter("txtQuantity"));
+
+                                if (bookID == null || bookID.trim().isEmpty()) {
+                                    checkError = true;
+                                    request.setAttribute("txtBookID_error", "Book ID cannot be empty.");
+                                }
+
+                                if (quantity < 0) {
+                                    checkError = true;
+                                    request.setAttribute("txtQuantity_error", "Quantity >=0.");
+                                }
+
+                                BookDTO book = new BookDTO(bookID, title, author, publishYear, price, quantity);
+                                if (!checkError) {
+                                    bookDAO.create(book);
+                                    // search
+                                    url = "search.jsp";
+                                    search(request, response);
+                                } else {
+                                    request.setAttribute("book", book);
+                                    url = "bookForm.jsp";
+                                }
+                            } catch (Exception e) {
+                            }
+                        }
+                    }
                 }
             }
         } catch (Exception e) {
