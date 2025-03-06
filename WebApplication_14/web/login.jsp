@@ -92,7 +92,6 @@
 
                     <button type="submit" class="submit-btn">Đăng nhập</button>
                 </form>
-                
                 ${requestScope.message==null?"":requestScope.message}
             </div>
         </div>
