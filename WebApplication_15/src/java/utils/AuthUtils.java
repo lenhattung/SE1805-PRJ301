@@ -8,6 +8,7 @@ package utils;
 import dao.UserDAO;
 import dto.UserDTO;
 import javax.servlet.http.HttpSession;
+import util.PasswordUtils;
 
 /**
  *
@@ -27,7 +28,7 @@ public class AuthUtils {
     public static boolean isValidLogin(String strUserID, String strPassword) {
         UserDTO user = getUser(strUserID);
         System.out.println(user);
-        return user != null && user.getPassword().equals(strPassword);
+        return user != null && PasswordUtils.checkPassword(strPassword, user.getPassword());
     }
 
     public static boolean isLoggedIn(HttpSession session) {
