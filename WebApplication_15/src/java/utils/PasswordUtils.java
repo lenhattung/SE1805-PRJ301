@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package util;
+package utils;
 
 import dao.UserDAO;
+import dto.UserDTO;
 import dto.UserDTO;
 import java.security.MessageDigest;
 import java.security.SecureRandom;

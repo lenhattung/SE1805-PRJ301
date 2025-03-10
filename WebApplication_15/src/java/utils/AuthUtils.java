@@ -8,7 +8,6 @@ package utils;
 import dao.UserDAO;
 import dto.UserDTO;
 import javax.servlet.http.HttpSession;
-import util.PasswordUtils;
 
 /**
  *
