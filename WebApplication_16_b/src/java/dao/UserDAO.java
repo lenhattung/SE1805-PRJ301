@@ -72,7 +72,7 @@ public class UserDAO implements IDAO<UserDTO, String> {
     }
 
     @Override
-    public UserDTO readById(String id) {
+    public UserDTO readByID(String id) {
         String sql = "SELECT * FROM tblUsers WHERE userID = ?";
         try {
             Connection conn = DBUtils.getConnection();

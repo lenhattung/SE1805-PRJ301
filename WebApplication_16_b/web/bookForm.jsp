@@ -15,7 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Book Management</title>
-        <link rel="stylesheet" href="assets/css/book-form.css"/>
+        <link rel="stylesheet" href="assets/css/book-form.css" />
     </head>
     <body>
         <jsp:include page="header.jsp"/>
@@ -177,7 +177,7 @@
          <!-- Thêm jQuery từ CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         
+      
         <script src="assets/js/book-form.js"/>
-        
     </body>
 </html>

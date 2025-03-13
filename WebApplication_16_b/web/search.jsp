@@ -188,7 +188,7 @@
                             <c:forEach var="b" items="${requestScope.books}">
                                 <tr>
                                     <td>${b.bookID}</td>
-                                    <td><img src="${b.image}" width="150px"/></td>
+                                    <td><img src="${b.image}" width="150px" /></td>
                                     <td>${b.title}</td>
                                     <td>${b.author}</td>
                                     <td>${b.publishYear}</td>

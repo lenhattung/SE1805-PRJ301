@@ -20,14 +20,14 @@ public class AuthUtils {
 
     public static UserDTO getUser(String strUserID) {
         UserDAO udao = new UserDAO();
-        UserDTO user = udao.readById(strUserID);
+        UserDTO user = udao.readByID(strUserID);
         return user;
     }
 
     public static boolean isValidLogin(String strUserID, String strPassword) {
         UserDTO user = getUser(strUserID);
         System.out.println(user);
-        return user != null && PasswordUtils.checkPassword(strPassword, user.getPassword());
+        return user != null && util.PasswordUtils.checkPassword(strPassword, user.getPassword());
     }
 
     public static boolean isLoggedIn(HttpSession session) {

@@ -25,7 +25,7 @@ public class BookDTO {
         this.publishYear = 0;
         this.price = 0;
         this.quantity = 0;
-        this.image ="";
+        this.image = "";
     }
 
     public BookDTO(String bookID, String title, String author, int publishYear, double price, int quantity, String image) {

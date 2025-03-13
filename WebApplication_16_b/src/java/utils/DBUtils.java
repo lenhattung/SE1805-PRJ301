@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 public class DBUtils {
 
-    private static final String DB_Name = "prj301_1805_slot8";
+    private static final String DB_Name = "prj301_1820_slot8";
     private static final String DB_Username = "sa";
     private static final String DB_Password = "12345";
 
@@ -29,6 +29,7 @@ public class DBUtils {
         Connection conn = null;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         String url = "jdbc:sqlserver://localhost:1433;databaseName=" + DB_Name;
+        // jdbc:sqlserver://190.128.4.195\instanceName:1433;databaseName=unicodedemo;useUnicode=true&characterEncoding=UTF-8
         conn = DriverManager.getConnection(url, DB_Username, DB_Password);
         return conn;
     }

@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package utils;
+package util;
 
 import dao.UserDAO;
-import dto.UserDTO;
 import dto.UserDTO;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
@@ -72,7 +71,7 @@ public class PasswordUtils {
         ALTER TABLE [dbo].[tblUsers]
         ALTER COLUMN [password] [varchar](250) NOT NULL;
         */
-       migratePasswords();
+        //migratePasswords();
     }
 }
 

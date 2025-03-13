@@ -70,7 +70,7 @@ public class BookDAO implements IDAO<BookDTO, String> {
     }
 
     @Override
-    public BookDTO readById(String id) {
+    public BookDTO readByID(String id) {
         String sql = "SELECT * FROM tblBooks WHERE BookID = ?";
         try {
             Connection conn = DBUtils.getConnection();
@@ -249,7 +249,7 @@ public class BookDAO implements IDAO<BookDTO, String> {
     }
     
     public BookDTO getBookByID(String bookID) {
-        return readById(bookID);
+        return readByID(bookID);
     }
     
     public boolean addBook(BookDTO book) {
