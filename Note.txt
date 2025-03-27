@@ -45,3 +45,6 @@ Slot 17 - https://youtu.be/hS0jwKTe6HQ
 ----
 Đăng ký shortcourse Spring Framework:
 https://docs.google.com/spreadsheets/d/1MkXwQ1nQlkY5P5AsF02hyPO0SildSMoIs_uxAfa1VUA/edit?usp=sharing
+
+Link nộp Assignment:
+https://drive.google.com/drive/folders/1taY6KXAGqu7zycI98cxqVo2zeXKOKqTz?usp=sharing
